@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-
+import { Router } from "@vaadin/router";
 export class LoginLit extends LitElement {
   static styles = [
     css`
@@ -71,15 +71,6 @@ export class LoginLit extends LitElement {
     `,
   ];
 
-  static properties = {
-    isLogin: { type: Boolean },
-  };
-
-  constructor() {
-    super();
-    this.isLogin = true;
-  }
-
   render() {
     return html`
       <section class="login">
@@ -92,28 +83,26 @@ export class LoginLit extends LitElement {
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="" id="password" />
-            <a id="noAccount" href="#" class="no-account">Doesn't have an account?</a>
+            <span id="noAccount" class="no-account">Doesn't have an account?</>
           </div>
           <button type="button" @click=${this.handleLoginUser}>Log In</button>
         </form>
       </section>
     `;
-  }
+  };
 
   firstUpdated() {
-    const isLogin = this.shadowRoot.getElementById('noAccount');
-    isLogin.addEventListener('click', this.handleClickIsLogin.bind(this));
-  }
+    const noAccount = this.shadowRoot.getElementById('noAccount');
+    noAccount.addEventListener('click', this.handleClickDoesnHaveAccount.bind(this));
+  };
 
   handleLoginUser() {
-    console.log("Log in...");
     alert("Log in...");
-  }
+  };
 
-  handleClickIsLogin(event) {
-    this.isLogin = !this.isLogin;
-    console.log(`Click en tag <a>`, this.isLogin);
-  }
+  handleClickDoesnHaveAccount() {
+    Router.go('/register');
+  };
 }
 
 customElements.define("login-lit", LoginLit);
