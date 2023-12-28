@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-
+import { Router } from "@vaadin/router";
 export class RegisterUser extends LitElement {
   static styles = [
     css`
@@ -58,23 +58,18 @@ export class RegisterUser extends LitElement {
         border-radius: 20px 120px 20px 20px;
       }
 
-      .no-account {
+      .already-account {
         font-size: 12px;
         text-align: right;
         text-decoration: underline;
         color: #dddbff;
       }
 
-      .no-account:hover {
+      .already-account:hover {
         cursor: pointer;
       }
     `,
   ];
-
-  handleRegisterUser() {
-    console.log("Register...");
-    alert('Register...');
-  }
 
   render() {
     return html`
@@ -96,13 +91,26 @@ export class RegisterUser extends LitElement {
           <div class="form-group">
             <label for="cellphone">Cellphone</label>
             <input type="cellphone" class="form-control" name="" id="cellphone" />
-            <a href="#" class="no-account">Are you already a user?</a>
+            <span id="alreadyAccount" class="already-account">Are you already a user?</span>
           </div>
-          <button type="button" @click=${this.handleRegisterUser}>Sign In</button>
+          <button type="button" @click=${this.handleRegisterUser}>Sign Up</button>
         </form>
       </section>
     `;
-  }
+  };
+
+  firstUpdated() {
+    const alreadyAccount = this.shadowRoot.getElementById('alreadyAccount');
+    alreadyAccount.addEventListener('click', this.handleAlreadyAccount.bind(this));
+  };
+
+  handleRegisterUser() {
+    alert('Register...');
+  };
+
+  handleAlreadyAccount() {
+    Router.go('/');
+  };
 }
 
 customElements.define("register-user", RegisterUser);
