@@ -78,11 +78,11 @@ export class RegisterUser extends LitElement {
           <h1>Register</h1>
           <div class="form-group">
             <label for="name">Name(s)</label>
-            <input type="name" class="form-control" name="" id="name" />
+            <input type="text" class="form-control" name="" id="name" />
           </div>
           <div class="form-group">
             <label for="lastname">Last name</label>
-            <input type="lastname" class="form-control" name="" id="lastname" />
+            <input type="text" class="form-control" name="" id="lastname" />
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -90,7 +90,7 @@ export class RegisterUser extends LitElement {
           </div>
           <div class="form-group">
             <label for="cellphone">Cellphone</label>
-            <input type="cellphone" class="form-control" name="" id="cellphone" />
+            <input type="tel" class="form-control" name="" id="cellphone" />
             <span id="alreadyAccount" class="already-account">Are you already a user?</span>
           </div>
           <button type="button" @click=${this.handleRegisterUser}>Sign Up</button>
@@ -109,7 +109,7 @@ export class RegisterUser extends LitElement {
   };
 
   handleAlreadyAccount() {
-    Router.go('/');
+    Router.go('/login');
   };
 }
 
