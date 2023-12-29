@@ -3,6 +3,7 @@ import { Router } from "@vaadin/router";
 import './components/login-lit';
 import './components/register-user';
 import './components/home-component';
+import './components/footer-component';
 
 const router = new Router(document.getElementById('outlet'));
 
