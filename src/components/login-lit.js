@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { Router } from "@vaadin/router";
+
 export class LoginLit extends LitElement {
   static styles = [
     css`
@@ -83,7 +84,7 @@ export class LoginLit extends LitElement {
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="" id="password" />
-            <span id="noAccount" class="no-account">Doesn't have an account?</>
+            <span id="noAccount" class="no-account">Doesn't have an account?</span>
           </div>
           <button type="button" @click=${this.handleLoginUser}>Log In</button>
         </form>
